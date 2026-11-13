@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>boolean</title>
+</head>
+<body>
+<script>
+
+  let boolean_var_true = true           // true
+  let boolean_var_false = false         // false
+  console.log(boolean_var_true, boolean_var_false)
+
+  let string_var_true = Boolean("123")  // 非空字符串
+  let string_var_false = Boolean("")    // 空字符串
+  console.log(string_var_true, string_var_false)
+
+  let number_var_true = Boolean(3)      // 非零数值, 无穷值
+  let number_var_false = Boolean(NaN)   // 零数值, Nan
+  console.log(number_var_true, number_var_false)
+
+  let obj = {}, null_obj = null;
+  let object_var_true = Boolean(obj)        // 非 null obj
+  let object_var_false = Boolean(null_obj)  // null obj
+  console.log(object_var_true, object_var_false)
+
+  let undefined_var_false = Boolean(undefined)  // undefined
+  console.log(undefined_var_false)
+
+</script>
+</body>
+</html>

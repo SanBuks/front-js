@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>let</title>
+</head>
+<body>
+<script>
+  // #1. 块作用域, 不可以条件声明, for 循环
+  if (true) {
+    let local_obj = 3
+  }
+  console.log(typeof local_obj === 'undefined')
+  // 此处的条件声明没有意义
+  if (typeof local_obj === 'undefined') {
+    let local_obj = 3
+  }
+  // let 防止迭代变量范围溢出
+  for (let i = 0; i < 5; i++) {
+    // i 都是不同对象, 打印 不同数值
+    setTimeout(() => { console.log(i) }, 0)
+  }
+  for (var _i = 0; _i < 5; _i++) {
+    // setTimeout 的 0 毫秒延迟并不意味着立即执行
+    // 它将回调函数放入事件队列, 等待当前执行栈清空后再执行
+    // _i 都是同一个对象, 打印 相同数值
+    setTimeout(() => { console.log(_i) }, 0)
+  }
+
+  // #2. 全局变量不会添加到 window
+  let global_obj = 3
+  console.log('let golbal_obj undefined', typeof window.global_obj === 'undefined')
+
+  // #3. 不可重复声明
+  // let global_obj = 4
+
+  // #4. 暂时性死区, 不会 hoist
+</script>
+</body>
+</html>

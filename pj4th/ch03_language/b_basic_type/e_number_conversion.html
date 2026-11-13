@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>number_conversion</title>
+</head>
+<body>
+<script>
+
+  // #1. Number() 优先按下述规则转化
+  console.log(Number(true))       // true -> 1
+  console.log(Number(false))      // false -> 0
+  console.log(Number(3.14))       // number -> number
+  console.log(Number(null))       // null -> 0
+  console.log(Number(undefined))  // undefined -> NaN
+  console.log("------------")
+
+  // #2. 字符串则按下述规则转化
+  console.log(Number("+1"))           // 包含整数值 -> 1
+  console.log(Number("01.1"))         // 包含浮点数, 忽略前导零 -> 1.1
+  console.log(Number("0o73"))         // 八进制 -> 59
+  console.log(Number("0xf3"))         // 十六进制 -> 243
+  console.log(Number(""))             // 空字符串 -> 0
+  console.log(Number("OtherString"))  // 非字符 -> NaN
+  console.log(Number("123xxxyz"))     // 包含任意非字符 -> NaN
+  console.log("------------")
+
+  // #3. 对象 调用 obj.valueOf() 方法进行类型转化, 如果是 NaN 则调用 toString() 按字符串转化
+  let obj = {}
+  console.log(obj.valueOf())   // valueOf -> Object
+  console.log(obj.toString())  // toString -> [object Object]
+  console.log(Number(obj))     // NaN
+  console.log("------------")
+
+  // 自定义转化规则
+  let custom_obj1 = {
+    valueOf: function () {
+      return 3;
+    }
+  }
+  // 自定义转化 toString 规则
+  let custom_obj2 = {
+    toString: function () {
+      return "3"
+    }
+  }
+  console.log(Number(custom_obj1))
+  console.log(Number(custom_obj2))
+
+</script>
+</body>
+</html>

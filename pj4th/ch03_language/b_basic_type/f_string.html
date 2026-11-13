@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>string</title>
+</head>
+<body>
+<script>
+
+  // #1. 字符串转义
+  console.log("This is \x41 letter sigma: \u03a3.")
+  // #2. 字符串不可变, 此处产生 5 个 string, 销毁 4 个 string
+  console.log("A" + "B" + "C" + "D")
+
+  // #3. obj.toString() 转化为字符串
+  let num_var = 3,
+      bool_var = true,
+      str_var = "123"
+  console.log(num_var.toString())
+  console.log(bool_var.toString())
+  console.log(str_var.toString())
+  // console.log(null.toString())       // null 不存在 toString() 方法
+  // console.log(undefined.toString())  // undefined 不存在 toString() 方法
+
+  // #4. num.toString() 可以转化进制
+  num_var = 11
+  console.log(num_var.toString(2))   // 1011
+  console.log(num_var.toString(8))   // 13
+  console.log(num_var.toString(16))  // b
+
+  // #5. String(var) 转化为字符串
+  console.log(bool_var)           // 存在 toString() 方法， 调用 toString() 方法
+  console.log(String(null))       // 返回 'null'
+  console.log(String(undefined))  // 返回 'undefined'
+
+  // #6. 模板字面量
+  console.log(
+`<div>
+  <span>JavaScript</span>
+</div>`)
+
+  // #7. 插值语法, 插入变量使用 toString(), String() 转化
+  let obj = {toString() { return 'Hello World'}}
+  console.log(`The words: ${obj} !`)
+  console.log(`The words: ${null} !`)
+
+</script>
+</body>
+</html>

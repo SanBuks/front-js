@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>null</title>
+</head>
+<body>
+<script>
+
+  // #1. null 与 undefined 区别
+  //     null 表示 object 引用 是空的, 可以显示赋值
+  //     undefined 表示 variable 是未定义的, 尽量不赋值 undefined
+  let obj = null
+  let message /*= undefined*/
+  console.log(typeof obj) // null 是 object 类型
+
+  // #2. null == undefined, null 由 undefined 派生而来, 表面相等
+  console.log (undefined == null)
+
+  // #3. undefined 可转化为 假值
+  if (!obj) {
+    console.log("null converted to false")
+  }
+
+</script>
+</body>
+</html>

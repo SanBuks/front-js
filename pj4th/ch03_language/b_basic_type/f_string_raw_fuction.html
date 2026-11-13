@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>string_raw_function</title>
+</head>
+<body>
+<script>
+
+  // #1. String.raw 防止转义
+  console.log(`123\n321`)             // 有换行
+  console.log(String.raw`123\n321`)   // 无换行
+  console.log(String.raw`123
+321`)                                 // 存在实际换行符
+
+  // #2. 标签函数 获取 原始值
+  //     strArray.raw 返回原始字符数组
+  function printRaw(templateArray, ...args) {
+    let rawArray = templateArray.raw
+    let resultArray = args.map((elem, index)=>{
+      return `${elem}${rawArray[index + 1]}`
+    })
+    resultArray.unshift(rawArray[0])
+    return resultArray.join("")
+  }
+  console.log(printRaw`\u00A9${'and'}\n`)
+
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>const</title>
+</head>
+<body>
+<script>
+  // #1. const 与 let 基本相同
+  //     唯一区别是用它声明变量时必须同时初始化变量且尝试修改 const声明的变量会导致运行时错误
+  const kValue = 10
+  // Uncaught TypeError: Assignment to constant variable.
+  // kValue = 'xx'
+
+  // #2. const 只限制指向变量的引用, 不可以改为对其他变量的引用
+  const obj = {}      // 此处 obj 虽然是 const, 但是只对于 obj 引用来说
+  obj.value = kValue  // obj 内部 属性仍然可以更改
+  console.log(obj.value)
+
+</script>
+</body>
+</html>

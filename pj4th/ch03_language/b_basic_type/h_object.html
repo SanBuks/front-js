@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>object</title>
+</head>
+<body>
+<script>
+
+  let obj = new Object()
+  let a = obj.constructor()
+  console.log(obj.hasOwnProperty('constructor'))        // 判断是否含有属性 (非继承)
+  console.log(obj.isPrototypeOf(a))                     // 判断是否是另一个对象的原型
+  console.log(obj.propertyIsEnumerable('constructor'))  // 判断属性是否可枚举
+  console.log(obj.toString())                           // 对象转字符串
+  console.log(obj.valueOf())                            // 对象自定义转化
+
+</script>
+</body>
+</html>

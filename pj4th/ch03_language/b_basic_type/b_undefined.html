@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>undefined</title>
+</head>
+<body>
+<script>
+
+  // #1. undefined 与 未定义对象区别
+  let message /*= undefined*/       // 尽量不赋值 undefined
+  console.log(message == undefined) // true
+  // console.log(age)               // ref error
+
+  // #2. undefined 可转化为 假值
+  if (!undefined) {
+    console.log("undefined converted to false")
+  }
+
+</script>
+</body>
+</html>

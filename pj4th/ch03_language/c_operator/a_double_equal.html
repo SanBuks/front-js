@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>==</title>
+</head>
+<body>
+<script>
+
+  let obj1 = {
+    valueOf() { return 123 }
+  }
+  let obj2 = {
+    toString() { return "123" }
+  }
+
+  // #1. 相同类型比较
+  console.log(NaN != NaN)         // NaN != NaN
+
+  // #2. null/undefined 比较
+  console.log(null == undefined)  // null/undefined == nul/undefined
+  console.log(null != obj)        // null 与其他类型不等
+
+  // #3. 对象转为数值进行比较
+  console.log(123 == obj1)        // obj.valueOf() 转为数值进行比较
+  console.log(123 == obj2)        // obj.toString() 字符串转为数值进行比较
+
+  // #4. symbol 比较
+  console.log(Symbol.for("key") != 123)
+  console.log(Symbol.for("key") == Symbol.for("key"))
+
+  // #5. 字符串转为数值比较
+  console.log(123 == "123")
+
+</script>
+</body>
+</html>

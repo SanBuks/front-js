@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>symbol_attribute</title>
+</head>
+<body>
+<script>
+
+  let a1 = Symbol.for('a1')
+  let a2 = Symbol.for('a2')
+  let a3 = Symbol.for('a3')
+  let a4 = Symbol.for('a4')
+  let a5 = Symbol.for('a5')
+
+  // #1. 多种方式定义对象属性, 防止冲突
+  const person = {
+    "a0": "a0",
+    [a1]: "a1",
+  }
+
+  person[a2] = "a2"
+
+  Object.defineProperty(person, a3, {
+    value: "a3"
+  })
+
+  Object.defineProperties(person, {
+    [a4] : { value: "a4" },
+    [a5] : { value: "a5" }
+  })
+  console.log(person)
+  console.log("--------------")
+
+  // #2. 获取对象定义属性
+  // 获取属性标签数组 a1-a5
+  console.log(Object.getOwnPropertySymbols(person));
+  // 获取属性字符串数组 a0
+  console.log(Object.getOwnPropertyNames(person));
+  // 获取所有属性描述符
+  console.log(Object.getOwnPropertyDescriptors(person));
+  // 获取键数组 (字符串或者标签)
+  console.log(Reflect.ownKeys(person));
+  console.log("--------------")
+
+  // #3. 寻找属性标签, 通过标签字符串比对
+  let sy = Object.getOwnPropertySymbols(person).find(
+    (symbol) => symbol.toString().match(/a1/))
+  console.log(sy)
+
+</script>
+</body>
+</html>

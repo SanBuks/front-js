@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>var_hoist</title>
+</head>
+<body>
+<script>
+  // #1. 函数中的 var 提升, 函数作用域
+  function test() {
+    // var x;       // 相当于置顶声明 x
+    console.log(x)  // undefined
+    var x = 3
+  }
+  test()
+  // var 对象是 函数作用域, 此处 x 已销毁, 触发引用异常
+  // console.log(x);
+
+  // #2. 全局中的 var 提升
+  console.log(y)
+  var y = 4
+
+  // #3. hoist 原因, var 可以多次重复声明定义初始化
+  var obj = 1
+  var obj = 2
+  var obj = 3
+</script>
+</body>
+</html>

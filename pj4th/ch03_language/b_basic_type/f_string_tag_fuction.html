@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>string_tag_function</title>
+</head>
+<body>
+<script>
+
+  // #1. 标签函数, 参数定义
+  //     templateArray 被参数分隔后的模板(字符串数组) 数量比参数多一,
+  //     aExp, bExp, sumExp 插值参数
+  let a = 6
+  let b = 9
+  function simpleTag(templateArray, aExp, bExp, sumExp) {
+    console.log(templateArray)
+    console.log(aExp)
+    console.log(bExp)
+    console.log(sumExp)
+    return 'tag_function'
+  }
+  let taggedResult = simpleTag`${a} + ${b} = ${a + b}`
+  console.log(taggedResult)
+  console.log('---------------')
+
+  // #2. 标签函数, 剩余操作符表示不定参数
+  function complexTag(strArray, ...expressions) {
+    console.log(strArray.length)
+    console.log(expressions.length)
+    let arr = expressions.map((e, i) => {
+      return `${e}${strArray[i + 1]}`
+    })
+    arr.unshift(strArray[0])
+    console.log(arr.join(''))
+    return 'tag_function'
+  }
+  console.log(complexTag`${a} + ${b} = ${a+b}, ${a * b}`)
+  console.log('---------------')
+</script>
+</body>
+</html>

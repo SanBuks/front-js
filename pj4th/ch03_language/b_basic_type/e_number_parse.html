@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>number_parse</title>
+</head>
+<body>
+<script>
+
+  // #1. parseInt(str, base)
+  console.log(parseInt("X123"))    // 第一个字符不能是不可解析 -> NaN
+  console.log(parseInt("123X"))    // 可以解析部分字符串 -> 123
+  console.log(parseInt("36", 16))  // 指定进制 -> 54
+  console.log("------------")
+
+  // #2. parseFloat(str)
+  console.log(parseFloat("1234blue"))  // 可以按整数解析 -> 1234
+  console.log(parseFloat("0xA"))       // 始终忽略开头零 -> NaN
+  console.log(parseFloat("22.34.5"))   // 忽略多余小数点 -> 22.34
+  console.log(parseFloat("3.125e7"))   // 识别科学计数法
+  console.log("------------")
+
+</script>
+</body>
+</html>

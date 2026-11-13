@@ -1,0 +1,85 @@
+# 1. 语法
+- 标识符
+  - 第一个字符必须是一个字母, 下划线 或 $ 
+  - 剩下的其他字符可以是字母, 下划线, 美元符号或数字 
+- 严格模式 `"use strict";` 
+
+# 2. 变量
+- 变量可以用于保存任何类型的数据, 每个变量只不过是一个用于保存任意值的命名占位符
+- #var 声明
+- #let 声明
+- #const 声明
+
+# 3. 基础类型
+- undefined, null, boolean, string, number, symbol, object(function)
+- #typeof 操作符号返回类型字符串
+- #undefined 未定义
+  - undefined 表示对象声明未定义, 与 RefError 有区别
+  - undefined 为 假值
+- #null 空值
+  - 表示引用为空 
+  - undefined == null
+- #boolean 布尔, 类型转化
+- #number 数值
+  - 进制 
+  - 浮点数, 科学计数法
+  - 最大值, 无穷值, NaN, NaN != NaN
+  - Number.isNaN()
+- #number_conversion 其他类型数值默认转化
+  - Number(var) 转化规则
+  - Number(str) 转化规则
+  - Number(obj) 转化规则
+- #number_parse 倾向字符串解析而非默认字符串转化
+  - parseInt(str, base)
+  - parseFloat(str)
+- #string 
+  - 字符串转义 
+  - 字符串不可变
+  - var.toString()
+  - String(var)
+  - 模板字面量
+  - 字符串模板
+  - 字符串插值
+- #string_tag_function 字符串标签函数
+  - 参数定义 
+  - 剩余参数
+- #string_raw_function
+  - String.raw 获取字面量原始值
+  - array.raw 获取字符数组的原始值数组
+- #symbol_basic: 原始值, 唯一, 不可变的, 确保对象属性使用唯一标识符不会发生属性冲突的危险
+  - 基础用法
+  - 全局符号注册表
+- #symbol_attr: 符号作为属性
+  - 内置定义属性
+  - Object.defineProperty 定义属性
+  - Object.defineProperties 定义属性
+  - Object.getOwnPropertySymbols(obj) 获取属性符号数组
+  - Object.getOwnPropertyNames(obj) 获取属性字符串数组
+  - Object.getOwnPropertyDescriptors(obj) 获取键值(符号, 字符串) 数组
+  - Reflect.ownKeys(obj) 获取键值的字符串数组
+  - 通过属性标签查找属性
+- #symbol_tag 内置符号(略)
+  - 内置符号暴露语言内部行为, 用来直接访问, 重写或模拟这些行为
+  - 内置属性都是不可写, 不可枚举, 不可配置
+- #object: 调用 Object() 创建对象
+  - constructor(): 用于创建当前对象的函数, 比如 Object()
+  - hasOwnProperty(propertyName): 用于判断当前对象实例(不是原型)上是否存在给定的属性
+  - isPrototypeOf(object): 用于判断当前对象是否为另一个对象的原型
+  - propertyIsEnumerable(propertyName): 用于判断给定的属性是否可以使用 for-in语句枚举
+  - toString(): 返回对象的字符串表示
+
+# 4. 操作符
+- 松散判等 #double_equal
+  - 相同的类型:
+    - Boolean, String, Number: 值判断, 注意 +0 == -0, NaN != NaN
+    - Object, Symbol: 仅当两个操作数引用同一个对象时返回 true
+  - null/undefined == null/undefined, null/undefined != other
+  - 如果其中一个操作数是对象, 另一个是原始值, 则将对象转换为原始值
+  - 两个操作数都被转换为原始值(Boolean, Number, String, Symbol):
+    - 如果是相同的类型, 按步骤重新比较
+    - 如果其中一个操作数是符号而另一个不是, 返回 false
+    - 如果其中一个操作数是布尔值而另一个不是, 则将布尔值转换为数字, 按步骤重新比较
+    - 数字与字符串: 将字符串转换为数字, 按步骤重新比较
+- 严格判等 #triple_equal
+  - 必须类型相同
+  - null 与 undefined 类型不相同

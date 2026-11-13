@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>var_basic</title>
+</head>
+<body>
+<script>
+  // #1. 不初始化情况下, 保存 undefined 特殊值
+  var obj1
+  console.log(obj1)
+
+  // #2. 松散类型: 变量可以改变值类型(不推荐)
+  obj1 = 3
+  console.log(obj1)
+  obj1 = '123'
+  console.log(obj1)
+
+  // #3. 声明多个变量
+  var obj2 = '123',
+      obj3 = '321'
+  console.log(obj2, obj3)
+
+  // #4. 省略 var 声明全局变量
+  function global_var() {
+    global_obj = 'global_var'
+  }
+  // 严格模式下 ReferenceError
+  // console.log(global_obj)
+
+  // #5. var 全局对象, 默认添加到 window 对象下
+  var global_obj = 'hi window!'
+  console.log(window.global_obj)
+
+</script>
+</body>
+</html>
